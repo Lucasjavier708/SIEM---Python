@@ -17,11 +17,11 @@ EStructura :
 
 La estructura va a ir siendo progresiva ya que se encuentra en etapa inicial el proyecto y esta en constantes  modificaciones 
 
-main.py → punto de entrada del programa
-src/collector.py → encargado de la recolección de logs
-logs/ → archivos de prueba para simulación
-data/ → almacenamiento de datos procesados (en desarrollo)
-README.md → documentación del proyecto 
+-main.py → punto de entrada del programa
+-src/collector.py → encargado de la recolección de logs
+-logs/ → archivos de prueba para simulación
+-data/ → almacenamiento de datos procesados (en desarrollo)
+-README.md → documentación del proyecto 
 
 Estado actual : 
 
