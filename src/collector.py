@@ -79,7 +79,7 @@ def parsear_evento(linea):
 
     return evento
 
-
+# Funcion 
 def obtener_eventos():
     """
     Función principal del módulo.
