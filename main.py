@@ -1,24 +1,26 @@
+# ============================================================
+# main.py
+# Punto de entrada del SIEM.
+# Desde acá se orquestan todos los módulos.
+# ============================================================
 
 from src.collector import obtener_eventos
+from src.analyzer  import analizar
+from src.alerter   import alertar
 
 
 def mostrar_bienvenida():
     print("=" * 55)
-    print("          🛡️  SIEM PYTHON  -  Etapa 1")
+    print("          🛡️  SIEM PYTHON  -  Etapa 3")
     print("=" * 55)
     print()
 
 
 def mostrar_eventos(eventos):
-    """
-    Muestra en consola todos los eventos recolectados
-    de forma legible.
-    """
     print(f"📋 Se encontraron {len(eventos)} eventos en el log:")
     print("-" * 55)
 
     for evento in eventos:
-        # Elegimos un ícono según el nivel del evento
         if evento["nivel"] == "INFO":
             icono = "✅"
         elif evento["nivel"] == "WARNING":
@@ -28,7 +30,6 @@ def mostrar_eventos(eventos):
         else:
             icono = "❓"
 
-        # informacion del evento 
         print(f"{icono} [{evento['fecha']} {evento['hora']}]")
         print(f"   Usuario : {evento['usuario']}")
         print(f"   IP      : {evento['ip']}")
@@ -45,16 +46,17 @@ def main():
     eventos = obtener_eventos()
     mostrar_eventos(eventos)
 
-    # --- ETAPA 3: Análisis (a desarrollar) ---
-    # alertas = analizar(eventos)
+    # --- ETAPA 3: Análisis ---
+    print("🧠 Analizando eventos...")
+    print()
+    alertas = analizar(eventos)
 
-    # --- ETAPA 5: Alertas (a desarrollar) ---
-    # alertar(alertas)
+    # --- ETAPA 5: Alertas ---
+    alertar(alertas)
 
     print("=" * 55)
-    print("  ✔  Etapa 1 completada. ¡El SIEM está en marcha!")
+    print("  ✔  Análisis completado.")
     print("=" * 55)
-
 
 
 if __name__ == "__main__":

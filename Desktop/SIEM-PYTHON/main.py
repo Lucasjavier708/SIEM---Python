@@ -1,5 +1,5 @@
 
-from src.collector import obtener_eventos
+from colector import obtener_eventos
 
 
 def mostrar_bienvenida():
