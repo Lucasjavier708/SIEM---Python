@@ -4,9 +4,9 @@
 # Desde acá se orquestan todos los módulos.
 # ============================================================
 
-from src.collector import obtener_eventos
-from src.analyzer  import analizar
-from src.alerter   import alertar
+from src.colector import obtener_eventos
+from src.analizer  import analizar
+from src.alertas   import alertar
 
 
 def mostrar_bienvenida():
