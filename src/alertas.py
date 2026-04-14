@@ -1,7 +1,6 @@
 # ============================================================
-# alerter.py
-# Responsabilidad: mostrar las alertas detectadas por el
-# analyzer de forma clara y legible en consola.
+# Aca se muestran las alertas detectadas por el
+#                    analizer 
 # ============================================================
 
 
@@ -15,17 +14,17 @@ def alertar(alertas):
     print("            🚨  SISTEMA DE ALERTAS")
     print("=" * 55)
 
-    # Si la lista está vacía, todo tranquilo
+    # Si la lista está vacía, todo tranquilo ,  no pasa nada 
     if len(alertas) == 0:
         print("✅ Sin alertas. Todo parece normal.")
         return
 
-    # Si hay alertas las mostramos una por una
+    # Si hay alertas se muestra una por una 
     print(f"⚠️  Se encontraron {len(alertas)} alerta(s):\n")
 
     for alerta in alertas:
 
-        # Elegimos el ícono según el tipo de alerta
+        # se elige el  ícono según el tipo de alerta
         if alerta["tipo"] == "FUERZA_BRUTA":
             icono = "🔴"
         elif alerta["tipo"] == "ERROR_CRITICO":
@@ -33,7 +32,7 @@ def alertar(alertas):
         else:
             icono = "⚠️ "
 
-        # Mostramos la alerta formateada
+        # Mostramos la alerta ya echa 
         print(f"{icono} ALERTA: {alerta['tipo']}")
         print(f"   IP      : {alerta['ip']}")
         print(f"   Detalle : {alerta['mensaje']}")

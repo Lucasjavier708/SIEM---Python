@@ -1,7 +1,6 @@
 # ============================================================
-# main.py
 # Punto de entrada del SIEM.
-# Desde acá se orquestan todos los módulos.
+# Desde acá se manejan todos los módulos.
 # ============================================================
 
 from src.colector import obtener_eventos
@@ -40,18 +39,18 @@ def mostrar_eventos(eventos):
 def main():
     mostrar_bienvenida()
 
-    # --- ETAPA 1: Recolección ---
+    # ---  Recolección ---
     print("🔍 Leyendo logs...")
     print()
     eventos = obtener_eventos()
     mostrar_eventos(eventos)
 
-    # --- ETAPA 3: Análisis ---
+    # --- Análisis ---
     print("🧠 Analizando eventos...")
     print()
     alertas = analizar(eventos)
 
-    # --- ETAPA 5: Alertas ---
+    # --- Alertas ---
     alertar(alertas)
 
     print("=" * 55)

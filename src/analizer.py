@@ -1,6 +1,5 @@
 # ============================================================
-# analyzer.py
-# Responsabilidad: analizar los eventos y detectar patrones
+# analiza los eventos y detectar patrones
 # sospechosos aplicando reglas de seguridad.
 # ============================================================
 
@@ -21,7 +20,7 @@ def detectar_fuerza_bruta(eventos):
     """
     alertas = []
 
-    # Diccionario para contar intentos fallidos por IP
+    # Aca se cuentas los  intentos fallidos por IP
     conteo_por_ip = {}
 
     for evento in eventos:
@@ -36,7 +35,7 @@ def detectar_fuerza_bruta(eventos):
             else:
                 conteo_por_ip[ip] = 1
 
-    # Ahora revisamos el diccionario y generamos alertas
+    # Ahora se revisa el diccionario y generamos alertas
     for ip, cantidad in conteo_por_ip.items():
         if cantidad >= LIMITE_FUERZA_BRUTA:
 
@@ -78,7 +77,7 @@ def analizar(eventos):
     Función principal del módulo.
     Ejecuta todas las reglas y devuelve todas las alertas encontradas.
     """
-    # Ejecutamos cada regla y combinamos los resultados
+    # se ejecuta cada regla y se cambie el resultado
     alertas_fuerza_bruta = detectar_fuerza_bruta(eventos)
     alertas_errores      = detectar_errores_criticos(eventos)
 
