@@ -6,11 +6,11 @@
 from src.colector import obtener_eventos
 from src.analizer  import analizar
 from src.alertas   import alertar
-
+from src.database  import inicializar, guardar_eventos, guardar_alertas
 
 def mostrar_bienvenida():
     print("=" * 55)
-    print("          🛡️  SIEM PYTHON  -  Etapa 3")
+    print("          🛡️  SIEM PYTHON  -  Etapa 4")
     print("=" * 55)
     print()
 
@@ -39,22 +39,35 @@ def mostrar_eventos(eventos):
 def main():
     mostrar_bienvenida()
 
-    # ---  Recolección ---
+    # ETAPA 4: Base de datos ---
+    print("🗄️  Inicializando base de datos...")
+    inicializar()
+    print()
+
+    #  ETAPA 1: Recolección ---
     print("🔍 Leyendo logs...")
     print()
     eventos = obtener_eventos()
     mostrar_eventos(eventos)
 
-    # --- Análisis ---
+    # ETAPA 4: Guardar eventos ---
+    guardar_eventos(eventos)
+    print()
+
+    #  ETAPA 3: Análisis ---
     print("🧠 Analizando eventos...")
     print()
     alertas = analizar(eventos)
 
-    # --- Alertas ---
+    # ETAPA 4: Guardar alertas ---
+    guardar_alertas(alertas)
+    print()
+
+    #  ETAPA 3: Mostrar alertas ---
     alertar(alertas)
 
     print("=" * 55)
-    print("  ✔  Análisis completado.")
+    print("  ✔  Todo guardado en la base de datos.")
     print("=" * 55)
 
 
