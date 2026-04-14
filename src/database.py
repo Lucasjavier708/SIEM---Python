@@ -1,6 +1,5 @@
 # ============================================================
-# database.py
-# Responsabilidad: crear la base de datos, guardar eventos
+# aca se  crea la base de datos, guardar eventos
 # y alertas para que no se pierdan al cerrar el programa.
 # ============================================================
 
