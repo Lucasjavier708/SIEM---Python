@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ SIEM Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #58a6ff;
+            font-size: 28px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 15px;
+        }
+
+        /* Tarjetas de estadísticas */
+        .stats {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 140px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card .numero {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .card .etiqueta {
+            font-size: 13px;
+            color: #8b949e;
+        }
+
+        .card.total   .numero { color: #58a6ff; }
+        .card.exito   .numero { color: #3fb950; }
+        .card.fallo   .numero { color: #d29922; }
+        .card.error   .numero { color: #f85149; }
+
+        /* Secciones */
+        .seccion {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .seccion h2 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: #58a6ff;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+        }
+
+        /* Tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            text-align: left;
+            padding: 10px 12px;
+            color: #8b949e;
+            border-bottom: 1px solid #30363d;
+            font-weight: 500;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #1c2128; }
+
+        /* Badges de nivel */
+        .badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge.INFO    { background: #1f4b8e; color: #58a6ff; }
+        .badge.WARNING { background: #4b3a1f; color: #d29922; }
+        .badge.ERROR   { background: #4b1f1f; color: #f85149; }
+
+        /* Alertas */
+        .alerta {
+            background: #1c1014;
+            border-left: 4px solid #f85149;
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+        }
+
+        .alerta.FUERZA_BRUTA  { border-color: #f85149; }
+        .alerta.ERROR_CRITICO { border-color: #8957e5; }
+
+        .alerta .tipo {
+            font-size: 13px;
+            font-weight: bold;
+            color: #f85149;
+            margin-bottom: 4px;
+        }
+
+        .alerta.ERROR_CRITICO .tipo { color: #8957e5; }
+
+        .alerta .detalle {
+            font-size: 13px;
+            color: #8b949e;
+        }
+
+        .sin-alertas {
+            color: #3fb950;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🛡️ SIEM Python — Dashboard</h1>
+
+    <!-- Estadísticas -->
+    <div class="stats">
+        <div class="card total">
+            <div class="numero">{{ stats.total }}</div>
+            <div class="etiqueta">Total eventos</div>
+        </div>
+        <div class="card exito">
+            <div class="numero">{{ stats.exitosos }}</div>
+            <div class="etiqueta">Logins exitosos</div>
+        </div>
+        <div class="card fallo">
+            <div class="numero">{{ stats.fallidos }}</div>
+            <div class="etiqueta">Logins fallidos</div>
+        </div>
+        <div class="card error">
+            <div class="numero">{{ stats.errores }}</div>
+            <div class="etiqueta">Errores críticos</div>
+        </div>
+    </div>
+
+    <!-- Alertas -->
+    <div class="seccion">
+        <h2>🚨 Alertas detectadas</h2>
+
+        {% if alertas %}
+            {% for alerta in alertas %}
+            <div class="alerta {{ alerta['tipo'] }}">
+                <div class="tipo">{{ alerta['tipo'] }}</div>
+                <div class="detalle">{{ alerta['mensaje'] }}</div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="sin-alertas">✅ Sin alertas. Todo parece normal.</div>
+        {% endif %}
+    </div>
+
+    <!-- Tabla de eventos -->
+    <div class="seccion">
+        <h2>📋 Eventos registrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Nivel</th>
+                    <th>Usuario</th>
+                    <th>IP</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evento in eventos %}
+                <tr>
+                    <td>{{ evento['fecha'] }}</td>
+                    <td>{{ evento['hora'] }}</td>
+                    <td><span class="badge {{ evento['nivel'] }}">{{ evento['nivel'] }}</span></td>
+                    <td>{{ evento['usuario'] }}</td>
+                    <td>{{ evento['ip'] }}</td>
+                    <td>{{ evento['accion'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

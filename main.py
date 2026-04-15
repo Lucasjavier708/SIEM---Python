@@ -8,6 +8,8 @@ from src.analizer  import analizar
 from src.alertas   import alertar
 from src.database  import inicializar, guardar_eventos, guardar_alertas
 
+
+
 def mostrar_bienvenida():
     print("=" * 55)
     print("          🛡️  SIEM PYTHON  -  Etapa 4")
