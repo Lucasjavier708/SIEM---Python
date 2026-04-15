@@ -65,7 +65,8 @@ def index():
     )
 
 
-if __name__ == "__main__":
-    print("🛡️  SIEM Dashboard corriendo en http://localhost:5000")
-    app.run(host="0.0.0.0", port=5000, debug=False)
+import webbrowser
 
+if __name__ == "__main__":
+    webbrowser.open("http://localhost:5000")
+    app.run(debug=True)
