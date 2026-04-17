@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="10">
     <title>🛡️ SIEM Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -11,23 +13,29 @@
             background: #0d1117;
             color: #c9d1d9;
             font-family: 'Segoe UI', sans-serif;
-            padding: 20px;
+            padding: 24px;
         }
 
         h1 {
             text-align: center;
             color: #58a6ff;
-            font-size: 28px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 15px;
+            font-size: 26px;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #8b949e;
+            font-size: 13px;
+            margin-bottom: 28px;
         }
 
         /* Tarjetas de estadísticas */
         .stats {
             display: flex;
             gap: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
 
@@ -36,49 +44,121 @@
             min-width: 140px;
             background: #161b22;
             border: 1px solid #30363d;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 20px;
             text-align: center;
         }
 
         .card .numero {
-            font-size: 36px;
+            font-size: 38px;
             font-weight: bold;
             margin-bottom: 6px;
         }
 
         .card .etiqueta {
-            font-size: 13px;
+            font-size: 12px;
             color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .card.total   .numero { color: #58a6ff; }
-        .card.exito   .numero { color: #3fb950; }
-        .card.fallo   .numero { color: #d29922; }
-        .card.error   .numero { color: #f85149; }
+        .card.total  .numero { color: #58a6ff; }
+        .card.exito  .numero { color: #3fb950; }
+        .card.fallo  .numero { color: #d29922; }
+        .card.error  .numero { color: #f85149; }
 
-        /* Secciones */
-        .seccion {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 20px;
+        /* Grid de gráficos */
+        .graficos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
             margin-bottom: 24px;
         }
 
-        .seccion h2 {
-            font-size: 16px;
+        .grafico-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .grafico-card h2 {
+            font-size: 14px;
+            color: #8b949e;
             margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grafico-card canvas {
+            max-height: 220px;
+        }
+
+        /* Alertas */
+        .seccion {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .seccion h2 {
+            font-size: 15px;
             color: #58a6ff;
+            margin-bottom: 16px;
             border-bottom: 1px solid #30363d;
             padding-bottom: 10px;
+        }
+
+        .alerta {
+            background: #1c1014;
+            border-left: 4px solid #f85149;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alerta.ERROR_CRITICO { border-color: #8957e5; }
+        .alerta.FUERZA_BRUTA  { border-color: #f85149; }
+
+        .alerta .tipo {
+            font-size: 13px;
+            font-weight: bold;
+            color: #f85149;
+        }
+
+        .alerta.ERROR_CRITICO .tipo { color: #8957e5; }
+
+        .alerta .detalle {
+            font-size: 12px;
+            color: #8b949e;
+            margin-top: 3px;
+        }
+
+        .alerta .ip {
+            font-size: 12px;
+            color: #58a6ff;
+            background: #1f3a5f;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .sin-alertas {
+            color: #3fb950;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
         }
 
         /* Tabla */
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         th {
@@ -87,6 +167,9 @@
             color: #8b949e;
             border-bottom: 1px solid #30363d;
             font-weight: 500;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
         }
 
         td {
@@ -97,11 +180,10 @@
         tr:last-child td { border-bottom: none; }
         tr:hover td { background: #1c2128; }
 
-        /* Badges de nivel */
         .badge {
             padding: 3px 10px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 500;
         }
 
@@ -109,43 +191,18 @@
         .badge.WARNING { background: #4b3a1f; color: #d29922; }
         .badge.ERROR   { background: #4b1f1f; color: #f85149; }
 
-        /* Alertas */
-        .alerta {
-            background: #1c1014;
-            border-left: 4px solid #f85149;
-            border-radius: 6px;
-            padding: 14px 16px;
-            margin-bottom: 12px;
-        }
-
-        .alerta.FUERZA_BRUTA  { border-color: #f85149; }
-        .alerta.ERROR_CRITICO { border-color: #8957e5; }
-
-        .alerta .tipo {
-            font-size: 13px;
-            font-weight: bold;
-            color: #f85149;
-            margin-bottom: 4px;
-        }
-
-        .alerta.ERROR_CRITICO .tipo { color: #8957e5; }
-
-        .alerta .detalle {
-            font-size: 13px;
-            color: #8b949e;
-        }
-
-        .sin-alertas {
-            color: #3fb950;
-            font-size: 14px;
+        .refresh {
             text-align: center;
-            padding: 20px;
+            font-size: 11px;
+            color: #8b949e;
+            margin-top: 16px;
         }
     </style>
 </head>
 <body>
 
     <h1>🛡️ SIEM Python</h1>
+    <p class="subtitulo">Dashboard de seguridad — se actualiza cada 10 segundos</p>
 
     <!-- Estadísticas -->
     <div class="stats">
@@ -167,15 +224,29 @@
         </div>
     </div>
 
+    <!-- Gráficos -->
+    <div class="graficos">
+        <div class="grafico-card">
+            <h2>📊 Distribución de eventos</h2>
+            <canvas id="graficoTorta"></canvas>
+        </div>
+        <div class="grafico-card">
+            <h2>📈 Resumen de actividad</h2>
+            <canvas id="graficoBarra"></canvas>
+        </div>
+    </div>
+
     <!-- Alertas -->
     <div class="seccion">
-        <h2>🚨 Alertas detectadas</h2>
-
+        <h2>🚨 Últimas alertas detectadas</h2>
         {% if alertas %}
-            {% for alerta in alertas %}
+            {% for alerta in alertas[:10] %}
             <div class="alerta {{ alerta['tipo'] }}">
-                <div class="tipo">{{ alerta['tipo'] }}</div>
-                <div class="detalle">{{ alerta['mensaje'] }}</div>
+                <div>
+                    <div class="tipo">{{ alerta['tipo'] }}</div>
+                    <div class="detalle">{{ alerta['mensaje'] }}</div>
+                </div>
+                <div class="ip">{{ alerta['ip'] }}</div>
             </div>
             {% endfor %}
         {% else %}
@@ -185,7 +256,7 @@
 
     <!-- Tabla de eventos -->
     <div class="seccion">
-        <h2>📋 Eventos registrados</h2>
+        <h2>📋 Últimos eventos registrados</h2>
         <table>
             <thead>
                 <tr>
@@ -198,7 +269,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for evento in eventos %}
+                {% for evento in eventos[:20] %}
                 <tr>
                     <td>{{ evento['fecha'] }}</td>
                     <td>{{ evento['hora'] }}</td>
@@ -211,6 +282,58 @@
             </tbody>
         </table>
     </div>
+
+    <p class="refresh">⏱ Página actualizada automáticamente cada 10 segundos</p>
+
+    <script>
+        // Gráfico de torta — distribución de eventos
+        const ctxTorta = document.getElementById('graficoTorta').getContext('2d');
+        new Chart(ctxTorta, {
+            type: 'doughnut',
+            data: {
+                labels: ['Logins exitosos', 'Logins fallidos', 'Errores críticos'],
+                datasets: [{
+                    data: [{{ stats.exitosos }}, {{ stats.fallidos }}, {{ stats.errores }}],
+                    backgroundColor: ['#3fb950', '#d29922', '#f85149'],
+                    borderColor: '#161b22',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: '#c9d1d9', font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Gráfico de barras — resumen
+        const ctxBarra = document.getElementById('graficoBarra').getContext('2d');
+        new Chart(ctxBarra, {
+            type: 'bar',
+            data: {
+                labels: ['Exitosos', 'Fallidos', 'Errores', 'Total'],
+                datasets: [{
+                    label: 'Eventos',
+                    data: [{{ stats.exitosos }}, {{ stats.fallidos }}, {{ stats.errores }}, {{ stats.total }}],
+                    backgroundColor: ['#3fb950', '#d29922', '#f85149', '#58a6ff'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { ticks: { color: '#8b949e' }, grid: { color: '#21262d' } },
+                    y: { ticks: { color: '#8b949e' }, grid: { color: '#21262d' } }
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
