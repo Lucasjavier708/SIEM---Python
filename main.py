@@ -3,74 +3,66 @@
 # Desde acá se manejan todos los módulos.
 # ============================================================
 
+import time
 from src.colector import obtener_eventos
 from src.analizer  import analizar
 from src.alertas   import alertar
 from src.database  import inicializar, guardar_eventos, guardar_alertas
 
+# Cada cuántos segundos revisa los logs
+INTERVALO = 10
 
 
 def mostrar_bienvenida():
     print("=" * 55)
-    print("          🛡️  SIEM PYTHON  -  Etapa 4")
+    print("       🛡️  SIEM PYTHON  -  Tiempo Real")
+    print("=" * 55)
+    print(f"   Revisando logs cada {INTERVALO} segundos")
+    print("   Presioná Ctrl+C para detener")
     print("=" * 55)
     print()
-
-
-def mostrar_eventos(eventos):
-    print(f"📋 Se encontraron {len(eventos)} eventos en el log:")
-    print("-" * 55)
-
-    for evento in eventos:
-        if evento["nivel"] == "INFO":
-            icono = "✅"
-        elif evento["nivel"] == "WARNING":
-            icono = "⚠️ "
-        elif evento["nivel"] == "ERROR":
-            icono = "🔴"
-        else:
-            icono = "❓"
-
-        print(f"{icono} [{evento['fecha']} {evento['hora']}]")
-        print(f"   Usuario : {evento['usuario']}")
-        print(f"   IP      : {evento['ip']}")
-        print(f"   Acción  : {evento['accion']}")
-        print()
 
 
 def main():
     mostrar_bienvenida()
 
-    # ETAPA 4: Base de datos ---
-    print("🗄️  Inicializando base de datos...")
+    # Inicializamos la base de datos una sola vez
     inicializar()
     print()
 
-    #  ETAPA 1: Recolección ---
-    print("🔍 Leyendo logs...")
-    print()
-    eventos = obtener_eventos()
-    mostrar_eventos(eventos)
+    ciclo = 1
 
-    # ETAPA 4: Guardar eventos ---
-    guardar_eventos(eventos)
-    print()
+    # Bucle infinito — corre hasta que presionés Ctrl+C
+    while True:
+        try:
+            print(f"🔍 Ciclo #{ciclo} — leyendo logs...")
 
-    #  ETAPA 3: Análisis ---
-    print("🧠 Analizando eventos...")
-    print()
-    alertas = analizar(eventos)
+            # Recolectamos los últimos 50 eventos
+            eventos = obtener_eventos(50)
+            print(f"   📋 {len(eventos)} eventos leídos")
 
-    # ETAPA 4: Guardar alertas ---
-    guardar_alertas(alertas)
-    print()
+            # Guardamos en BD
+            guardar_eventos(eventos)
 
-    #  ETAPA 3: Mostrar alertas ---
-    alertar(alertas)
+            # Analizamos
+            alertas = analizar(eventos)
 
-    print("=" * 55)
-    print("  ✔  Todo guardado en la base de datos.")
-    print("=" * 55)
+            # Guardamos alertas
+            if len(alertas) > 0:
+                guardar_alertas(alertas)
+                alertar(alertas)
+            else:
+                print("   ✅ Sin alertas nuevas")
+
+            print(f"   ⏳ Próxima revisión en {INTERVALO} segundos...\n")
+            ciclo += 1
+
+            # Esperamos antes del próximo ciclo
+            time.sleep(INTERVALO)
+
+        except KeyboardInterrupt:
+            print("\n\n🛑 SIEM detenido por el usuario.")
+            break
 
 
 if __name__ == "__main__":
