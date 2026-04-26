@@ -1,12 +1,8 @@
 # ============================================================
-# database.py — ETAPA 4 actualizada
-# Agrega verificación de duplicados antes de guardar.
+# database.py Tramo final Database 
 # ============================================================
 
-# ============================================================
-# database_sqlserver.py — SQL Server
-# Reemplaza database.py cuando estés listo para producción.
-# ============================================================
+
 
 import pyodbc
 
@@ -17,7 +13,7 @@ USUARIO  = "sa"
 PASSWORD  = "lucas1025."
 
 CADENA_CONEXION = (
-    f"DRIVER={{ODBC Driver 17 for SQL Server}};"
+    f"DRIVER={{ODBC Driver 18 for SQL Server}};"
     f"SERVER={SERVIDOR};"
     f"DATABASE={BASE};"
     f"UID={USUARIO};"
