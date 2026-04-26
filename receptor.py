@@ -50,4 +50,4 @@ if __name__ == "__main__":
     print("  Puerto: 5000")
     print("=" * 50)
     # host 0.0.0.0 para recibir de toda la red
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=5001, debug=False)
