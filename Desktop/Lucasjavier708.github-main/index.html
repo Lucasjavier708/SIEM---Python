@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lucas Pizarro - Cybersecurity Analyst & SOC L1">
+  <title>Lucas Pizarro | Cybersecurity & SOC L1</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="matrix-bg"></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+      <div class="logo" id="animLogo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M20 5L35 12V28L20 35L5 28V12L20 5Z" stroke="url(#logoGrad)" stroke-width="2" fill="none"/>
+          <circle cx="20" cy="20" r="4" fill="url(#logoGrad)"/>
+          <defs><linearGradient id="logoGrad"><stop offset="0%" style="stop-color:var(--neon-cyan)"/><stop offset="100%" style="stop-color:var(--neon-magenta)"/></linearGradient></defs>
+        </svg>
+        <span>LP</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#formacion">Formación</a>
+        <a href="#stack">Stack</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#laboratorio">Laboratorio</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#contacto" class="nav-cta">Hablemos</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">$ lucas@security ~</div>
+      <h1 class="hero-name"><span class="typing-text"></span><span class="cursor"></span></h1>
+      <p class="hero-subtitle">SOC L1 Operator | Blue Team Specialist</p>
+      <p class="hero-description">Estudiante de Sistemas especializado en Ciberseguridad con sólida base en análisis de logs, detección de amenazas y operaciones SOC. Enfocado en Purple Team, threat intelligence y detection engineering. Certificado en SOC operations y análisis de seguridad informática.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary"><i class="ri-mail-send-line"></i> Contactar</a>
+        <a href="https://github.com/lucasjavier708" target="_blank" class="btn btn-secondary"><i class="ri-github-line"></i> GitHub</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/lucasjavier708" target="_blank"><i class="ri-github-line"></i></a>
+        <a href="https://www.linkedin.com/in/lucas-pizarro1492/" target="_blank"><i class="ri-linkedin-line"></i></a>
+        <a href="https://www.youtube.com/@L-security" target="_blank"><i class="ri-youtube-line"></i></a>
+        <a href="mailto:lucaspizarro.info@gmail.com"><i class="ri-mail-line"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER CON ANIMACIÓN TÚNEL -->
+<div class="animated-divider">
+  <div class="tunnel-pulse"></div>
+</div>
+
+<!-- EXPERIENCIA -->
+<section class="section experiencia" id="experiencia">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Experiencia</h2>
+      <p class="section-subtitle">Trayectoria profesional</p>
+    </div>
+    <div class="exp-list">
+      <div class="exp-card">
+        <div class="exp-bar"></div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div><h3>REDLABORATORIO</h3><p class="exp-role">Home Lab - Purple Team Operations</p></div>
+            <div class="exp-meta"><span>2023 - Presente</span><span>Buenos Aires</span></div>
+          </div>
+          <p class="exp-desc">Infraestructura completa con Wazuh SIEM, Kali Linux y Windows Server. Ciclos attack-detection, análisis de logs y documentación de 20+ incident cases con mappeo MITRE ATT&CK.</p>
+          <div class="exp-tags"><span>Wazuh</span><span>Detection Engineering</span><span>MITRE ATT&CK</span><span>Incident Analysis</span></div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-bar"></div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div><h3>Treoland</h3><p class="exp-role">Administrativo de Control de Inventario</p></div>
+            <div class="exp-meta"><span>2023 - 2025</span></div>
+          </div>
+          <p class="exp-desc">Gestión de inventario, validación de registros y control de calidad con bases de datos SQL y sistemas Linux.</p>
+          <div class="exp-tags"><span>Linux</span><span>SQL</span><span>Data Validation</span></div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-bar"></div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div><h3>4 Gatos Cervecería</h3><p class="exp-role">Control de Inventario & Data Entry</p></div>
+            <div class="exp-meta"><span>2021 - 2023</span></div>
+          </div>
+          <p class="exp-desc">Control y gestión de inventario con análisis de discrepancias y data entry.</p>
+          <div class="exp-tags"><span>Data Entry</span><span>Inventory Control</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section class="section formacion" id="formacion">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Formación</h2>
+      <p class="section-subtitle">Educación y certificaciones</p>
+    </div>
+    <h3 class="subsection-label">Formación Formal</h3>
+    <div class="formacion-cards">
+      <div class="formacion-card">
+        <div class="formacion-icon"><i class="ri-graduation-cap-line"></i></div>
+        <div class="formacion-info">
+          <h4>ESBA Barrio Norte</h4>
+          <p>Tecnicatura en Análisis de Sistemas</p>
+          <span class="badge">Marzo 2025 - Diciembre 2025</span>
+        </div>
+      </div>
+      <div class="formacion-card">
+        <div class="formacion-icon"><i class="ri-graduation-cap-line"></i></div>
+        <div class="formacion-info">
+          <h4>UTN FRBA</h4>
+          <p>Diplomatura en Experto en Seguridad Informática</p>
+          <span class="badge">Octubre 2024 - Completado</span>
+        </div>
+      </div>
+    </div>
+    <h3 class="subsection-label" style="margin-top: 2rem;">Cursos & Certificaciones</h3>
+    <div class="certificaciones-grid">
+      <div class="cert-card">
+        <div class="cert-logo"><i class="ri-graduation-cap-2-line"></i></div>
+        <h4>Experto en Seguridad</h4>
+        <p>UTN FRBA</p>
+        <span class="cert-date">2024 - 2025</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-logo"><i class="ri-shield-check-line"></i></div>
+        <h4>SOC Operator</h4>
+        <p>EducacionIT</p>
+        <span class="cert-date">2024</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-logo"><i class="ri-code-s-slash-line"></i></div>
+        <h4>Desarrollador Frontend</h4>
+        <p>UTN FRBA</p>
+        <span class="cert-date">2023 - 2024</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-logo"><i class="ri-cloud-line"></i></div>
+        <h4>AWS Solutions</h4>
+        <p>Udemy</p>
+        <span class="cert-date">En curso</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-logo"><i class="ri-openai-line"></i></div>
+        <h4>Prompt Engineering</h4>
+        <p>Anthropic</p>
+        <span class="cert-date">En curso</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK TÉCNICO -->
+<section class="section stack-tecnico" id="stack">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Stack Técnico</h2>
+      <p class="section-subtitle">Tecnologías y herramientas</p>
+    </div>
+    <div class="stack-layout">
+      <svg class="stack-line-top" viewBox="0 0 1000 20" preserveAspectRatio="none">
+        <line x1="0" y1="10" x2="1000" y2="10" stroke="url(#lineGradCyan)" stroke-width="3" stroke-linecap="round"/>
+        <defs><linearGradient id="lineGradCyan" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:var(--neon-cyan);stop-opacity:0.4"/><stop offset="50%" style="stop-color:var(--neon-cyan);stop-opacity:1"/><stop offset="100%" style="stop-color:var(--neon-cyan);stop-opacity:0.4"/></linearGradient></defs>
+      </svg>
+      <div class="stack-containers">
+        <div class="stack-container">
+          <div class="stack-container-header">
+            <i class="ri-shield-check-line"></i>
+            <h3>Seguridad & SOC</h3>
+          </div>
+          <div class="stack-tools">
+            <div class="tool"><i class="fa-solid fa-shield"></i><span>Wazuh</span></div>
+            <div class="tool"><i class="fa-brands fa-linux"></i><span>Linux</span></div>
+            <div class="tool"><i class="fa-solid fa-radar"></i><span>Nmap</span></div>
+            <div class="tool"><i class="fa-solid fa-chart-line"></i><span>Wireshark</span></div>
+          </div>
+        </div>
+        <div class="stack-container">
+          <div class="stack-container-header">
+            <i class="ri-database-line"></i>
+            <h3>Backend & Databases</h3>
+          </div>
+          <div class="stack-tools">
+            <div class="tool"><i class="fa-brands fa-python"></i><span>Python</span></div>
+            <div class="tool"><i class="fa-solid fa-database"></i><span>SQL</span></div>
+            <div class="tool"><i class="fa-brands fa-node-js"></i><span>Node.js</span></div>
+            <div class="tool"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
+          </div>
+        </div>
+        <div class="stack-container">
+          <div class="stack-container-header">
+            <i class="ri-cloud-line"></i>
+            <h3>Infrastructure & Tools</h3>
+          </div>
+          <div class="stack-tools">
+            <div class="tool"><i class="fa-brands fa-aws"></i><span>AWS</span></div>
+            <div class="tool"><i class="fa-brands fa-git-alt"></i><span>Git</span></div>
+            <div class="tool"><i class="fa-solid fa-terminal"></i><span>Bash</span></div>
+            <div class="tool"><i class="fa-solid fa-code"></i><span>C#</span></div>
+          </div>
+        </div>
+      </div>
+      <svg class="stack-line-bottom" viewBox="0 0 1000 20" preserveAspectRatio="none">
+        <line x1="0" y1="10" x2="1000" y2="10" stroke="url(#lineGradMagenta)" stroke-width="3" stroke-linecap="round"/>
+        <defs><linearGradient id="lineGradMagenta" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:var(--neon-magenta);stop-opacity:0.4"/><stop offset="50%" style="stop-color:var(--neon-magenta);stop-opacity:1"/><stop offset="100%" style="stop-color:var(--neon-magenta);stop-opacity:0.4"/></linearGradient></defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="section proyectos" id="proyectos">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Proyectos</h2>
+      <p class="section-subtitle">Trabajos destacados</p>
+    </div>
+    <div class="proyectos-layout">
+      <div class="proyecto-imagen" id="proyImgContainer">
+        <img src="https://via.placeholder.com/400x400?text=REDLABORATORIO" alt="Proyecto" class="proyecto-img-display" id="proyImgDisplay">
+      </div>
+      <div class="proyectos-cards-wrapper">
+        <button class="proyecto-btn proyecto-btn-up" onclick="scrollProyectosUp()"><i class="ri-arrow-up-s-line"></i></button>
+        <div class="proyectos-cards" id="proyectosCards">
+          <div class="proyecto-card" data-img="https://via.placeholder.com/400x400?text=REDLABORATORIO">
+            <div class="proyecto-icon"><i class="ri-shield-check-line"></i></div>
+            <div class="proyecto-info">
+              <h3>REDLABORATORIO</h3>
+              <p class="proyecto-subtitle">Home Lab - Purple Team</p>
+              <p class="proyecto-desc">Infraestructura completa con Wazuh SIEM. Ciclos attack-detection automatizados usando Hydra, scripts SQLi y análisis de logs con reglas custom. Documentación de 20+ incident cases con mappeo MITRE ATT&CK.</p>
+              <div class="proyecto-tags"><span>Wazuh</span><span>Detection</span><span>MITRE</span></div>
+              <a href="#" class="proyecto-link">Ver más →</a>
+            </div>
+          </div>
+          <div class="proyecto-card" data-img="https://via.placeholder.com/400x400?text=NEXUS">
+            <div class="proyecto-icon"><i class="ri-code-s-slash-line"></i></div>
+            <div class="proyecto-info">
+              <h3>NEXUS</h3>
+              <p class="proyecto-subtitle">Vulnerable Web App</p>
+              <p class="proyecto-desc">Aplicación Node.js e-commerce con 25+ vulnerabilidades intencionales. Desarrollo de 50+ reglas de detección Wazuh. Purple Team exercise para validar effectiveness de detection rules contra OWASP Top 10.</p>
+              <div class="proyecto-tags"><span>Node.js</span><span>OWASP</span><span>Wazuh</span></div>
+              <a href="#" class="proyecto-link">Ver más →</a>
+            </div>
+          </div>
+          <div class="proyecto-card" data-img="https://via.placeholder.com/400x400?text=SECUREMONITOR">
+            <div class="proyecto-icon"><i class="ri-database-2-line"></i></div>
+            <div class="proyecto-info">
+              <h3>SecureMonitor SIEM</h3>
+              <p class="proyecto-subtitle">Custom SIEM Platform</p>
+              <p class="proyecto-desc">Plataforma SIEM desarrollada en Python con Flask dashboard y SQL Server backend. Gestión centralizada de logs, correlación de eventos y detección de incidentes. Validación contra simulaciones de ataque Hydra SSH brute force.</p>
+              <div class="proyecto-tags"><span>Python</span><span>Flask</span><span>SQL</span></div>
+              <a href="#" class="proyecto-link">Ver más →</a>
+            </div>
+          </div>
+        </div>
+        <button class="proyecto-btn proyecto-btn-down" onclick="scrollProyectosDown()"><i class="ri-arrow-down-s-line"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER CON ANIMACIÓN TÚNEL -->
+<div class="animated-divider">
+  <div class="tunnel-pulse"></div>
+</div>
+
+<!-- LABORATORIO -->
+<section class="section laboratorio" id="laboratorio">
+  <div class="lab-bg" id="labBg">
+    <div class="lab-slide"></div>
+    <div class="lab-slide"></div>
+    <div class="lab-slide"></div>
+  </div>
+  <div class="lab-overlay">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Laboratorio</h2>
+        <p class="section-subtitle">Entorno personal de experimentación</p>
+      </div>
+      <div class="lab-content">
+        <div class="lab-description">
+          <h3>REDLABORATORIO</h3>
+          <p>Infraestructura física de laboratorio con Kali Linux (attacker), Windows Server (target), Ubuntu Server (Docker). Wazuh manager centralizado con agentes en todos los sistemas. Ciclos completos de attack simulation y detection validation. Documentación detallada de cada incident con análisis forense y recomendaciones de mitigación.</p>
+          <a href="laboratorio.html" class="btn btn-secondary">Ver más</a>
+        </div>
+        <div class="lab-diagram">
+          <img src="./HOMELAB_SOC.jpg" alt="Diagrama Laboratorio" class="lab-diagram-img">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section contacto" id="contacto">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Contacto</h2>
+      <p class="section-subtitle">Disponible para oportunidades y colaboraciones</p>
+    </div>
+    <div class="contacto-grid">
+      <a href="https://github.com/lucasjavier708" target="_blank" class="contact-item"><i class="ri-github-line"></i><span>GitHub</span></a>
+      <a href="https://www.linkedin.com/in/lucas-pizarro1492/" target="_blank" class="contact-item"><i class="ri-linkedin-line"></i><span>LinkedIn</span></a>
+      <a href="https://www.youtube.com/@L-security" target="_blank" class="contact-item"><i class="ri-youtube-line"></i><span>YouTube</span></a>
+      <a href="mailto:lucaspizarro.info@gmail.com" class="contact-item"><i class="ri-mail-line"></i><span>Gmail</span></a>
+    </div>
+    <div class="cta-section">
+      <h3>¿Pregunta sobre SOC o seguridad?</h3>
+      <p>Disponible para consultas, colaboraciones y oportunidades de trabajo remoto</p>
+      <a href="mailto:lucaspizarro.info@gmail.com" class="btn btn-primary btn-large"><i class="ri-mail-send-line"></i> Escribime</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 — Lucas Javier Pizarro | Cybersecurity & SOC L1 Specialist</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

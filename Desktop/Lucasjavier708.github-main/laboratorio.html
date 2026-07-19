@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REDLABORATORIO | Lucas Pizarro</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="laboratorio.css">
+</head>
+<body>
+
+<div class="matrix-bg"></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+      <div class="logo" id="animLogo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M20 5L35 12V28L20 35L5 28V12L20 5Z" stroke="url(#logoGrad)" stroke-width="2" fill="none"/>
+          <circle cx="20" cy="20" r="4" fill="url(#logoGrad)"/>
+          <defs><linearGradient id="logoGrad"><stop offset="0%" style="stop-color:#00d9ff"/><stop offset="100%" style="stop-color:#ff1493"/></linearGradient></defs>
+        </svg>
+        <span>LP</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html#inicio">Volver</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="lab-hero">
+  <div class="container">
+    <h1 class="lab-title">REDLABORATORIO</h1>
+    <p class="lab-subtitle">Purple Team Operations & Detection Engineering</p>
+  </div>
+</section>
+
+<!-- GALERÍA PRINCIPAL -->
+<section class="section lab-gallery">
+  <div class="container">
+    <div class="gallery-main">
+      <img src="./_DSC3268.JPG" alt="Laboratorio" id="mainGalleryImg" class="main-image">
+    </div>
+  </div>
+</section>
+
+<!-- MINI DESCRIPCIÓN -->
+<section class="section lab-description">
+  <div class="container">
+    <div class="desc-card">
+      <h3>Infraestructura de Laboratorio</h3>
+      <p>REDLABORATORIO es un entorno completo de Purple Team diseñado para ciclos attack-detection. Infraestructura multisistema con Wazuh SIEM centralizado, máquinas atacantes (Kali Linux) y objetivos (Windows, Ubuntu, Docker). Documentación de 20+ incident cases con análisis forense y mappeo MITRE ATT&CK.</p>
+    </div>
+    <div class="cta-projects">
+      <a href="index.html#proyectos" class="btn btn-primary">Ver Proyectos Relacionados</a>
+    </div>
+  </div>
+</section>
+
+<!-- CARRUSEL EQUIPOS (MÁQUINAS + DISPOSITIVOS) -->
+<section class="section lab-equipment">
+  <div class="container">
+    <h2 class="section-title">Infraestructura Completa</h2>
+    
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" onclick="prevEquipment()"><i class="ri-arrow-left-s-line"></i></button>
+      
+      <div class="carousel-container">
+        <div class="carousel-track" id="equipmentTrack">
+          <!-- MÁQUINA 1 -->
+          <div class="equipment-card">
+            <div class="equipment-icon"><i class="ri-shield-check-line"></i></div>
+            <h3>MÁQUINA 1</h3>
+            <p class="equipment-role">SO: Windows 10/11</p>
+            <ul class="specs">
+              <li>CPU: Completar</li>
+              <li>RAM: Completar</li>
+              <li>Rol: Completar</li>
+            </ul>
+            <p class="desc">Descripción...</p>
+          </div>
+
+          <!-- MÁQUINA 2 -->
+          <div class="equipment-card">
+            <div class="equipment-icon"><i class="ri-terminal-line"></i></div>
+            <h3>MÁQUINA 2</h3>
+            <p class="equipment-role">SO: Kali Linux</p>
+            <ul class="specs">
+              <li>CPU: Completar</li>
+              <li>RAM: Completar</li>
+              <li>Rol: Completar</li>
+            </ul>
+            <p class="desc">Descripción...</p>
+          </div>
+
+          <!-- MÁQUINA 3 -->
+          <div class="equipment-card">
+            <div class="equipment-icon"><i class="ri-server-line"></i></div>
+            <h3>MÁQUINA 3</h3>
+            <p class="equipment-role">SO: Ubuntu Server</p>
+            <ul class="specs">
+              <li>CPU: Completar</li>
+              <li>RAM: Completar</li>
+              <li>Rol: Completar</li>
+            </ul>
+            <p class="desc">Descripción...</p>
+          </div>
+
+          <!-- MÁQUINA 4 -->
+          <div class="equipment-card">
+            <div class="equipment-icon"><i class="ri-database-line"></i></div>
+            <h3>MÁQUINA 4</h3>
+            <p class="equipment-role">SO: Docker/Containers</p>
+            <ul class="specs">
+              <li>CPU: Completar</li>
+              <li>RAM: Completar</li>
+              <li>Rol: Completar</li>
+            </ul>
+            <p class="desc">Descripción...</p>
+          </div>
+
+          <!-- DISPOSITIVO 1 -->
+          <div class="equipment-card">
+            <div class="equipment-icon"><i class="ri-wifi-router-line"></i></div>
+            <h3>Dispositivo 1</h3>
+            <p class="equipment-model">Modelo: Completar</p>
+            <ul class="specs">
+              <li>Tipo: Completar</li>
+              <li>Puertos: Completar</li>
+              <li>Función: Completar</li>
+            </ul>
+          </div>
+
+          <!-- DISPOSITIVO 2 -->
+          <div class="equipment-card">
+            <div class="equipment-icon"><i class="ri-router-line"></i></div>
+            <h3>Dispositivo 2</h3>
+            <p class="equipment-model">Modelo: Completar</p>
+            <ul class="specs">
+              <li>Tipo: Completar</li>
+              <li>Puertos: Completar</li>
+              <li>Función: Completar</li>
+            </ul>
+          </div>
+
+          <!-- DISPOSITIVO 3 -->
+          <div class="equipment-card">
+            <div class="equipment-icon"><i class="ri-settings-4-line"></i></div>
+            <h3>Dispositivo 3</h3>
+            <p class="equipment-model">Modelo: Completar</p>
+            <ul class="specs">
+              <li>Tipo: Completar</li>
+              <li>Puertos: Completar</li>
+              <li>Función: Completar</li>
+            </ul>
+          </div>
+
+          <!-- DISPOSITIVO 4 -->
+          <div class="equipment-card">
+            <div class="equipment-icon"><i class="ri-server-line"></i></div>
+            <h3>Dispositivo 4</h3>
+            <p class="equipment-model">Modelo: Completar</p>
+            <ul class="specs">
+              <li>Tipo: Completar</li>
+              <li>Puertos: Completar</li>
+              <li>Función: Completar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-btn next" onclick="nextEquipment()"><i class="ri-arrow-right-s-line"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- SOC SECTION -->
+<section class="section lab-soc">
+  <div class="container">
+    <h2 class="section-title">SOC | Security Operations Center</h2>
+    
+    <div class="soc-layout">
+      <!-- CARRUSEL IZQUIERDA -->
+      <div class="soc-carousel">
+        <div class="carousel-container">
+          <div class="carousel-track" id="socTrack">
+            <img src="/ImagenLab.jpeg" alt="SOC 1" class="soc-image">
+            <img src="https://via.placeholder.com/400x400?text=SOC+FOTO+2" alt="SOC 2" class="soc-image">
+            <img src="https://via.placeholder.com/400x400?text=SOC+FOTO+3" alt="SOC 3" class="soc-image">
+          </div>
+        </div>
+        <div class="soc-controls">
+          <button onclick="prevSoc()"><i class="ri-arrow-left-s-line"></i></button>
+          <button onclick="nextSoc()"><i class="ri-arrow-right-s-line"></i></button>
+        </div>
+      </div>
+
+      <!-- DESCRIPCIÓN DERECHA -->
+      <div class="soc-description">
+        <h3>Centro de Operaciones de Seguridad</h3>
+        <p>
+          REDLABORATORIO cuenta con un SOC centralizado donde se monitorean y analizan todos los eventos de seguridad. Wazuh SIEM como core, con reglas personalizadas para detección de ataques específicos.
+        </p>
+        <h4>Capacidades:</h4>
+        <ul class="soc-features">
+          <li><i class="ri-checkbox-circle-line"></i> Monitoreo en tiempo real (24/7)</li>
+          <li><i class="ri-checkbox-circle-line"></i> Análisis de logs centralizados</li>
+          <li><i class="ri-checkbox-circle-line"></i> Detección de intrusiones</li>
+          <li><i class="ri-checkbox-circle-line"></i> Correlación de eventos</li>
+          <li><i class="ri-checkbox-circle-line"></i> Incident response automático</li>
+          <li><i class="ri-checkbox-circle-line"></i> Compliance y auditoría</li>
+        </ul>
+        <p class="soc-footer">
+          Completar con más detalles sobre el SOC...
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 — Lucas Javier Pizarro | REDLABORATORIO</p>
+  </div>
+</footer>
+
+<script src="laboratorio.js"></script>
+</body>
+</html>
